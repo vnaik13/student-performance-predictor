@@ -1,6 +1,13 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import os
+import zipfile
+
+# Auto-extract pickle model if it isn't extracted yet
+if not os.path.exists("student_performance_pipeline.pkl"):
+    with zipfile.ZipFile("student_performance_pipeline.pkl.zip", "r") as zip_ref:
+        zip_ref.extractall(".")
 
 
 # Load trained model pipeline
